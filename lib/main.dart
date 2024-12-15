@@ -46,7 +46,8 @@ class _HouseFormState extends State<HouseForm> {
 
       if (response.statusCode == 200) {
         setState(() {
-          _predictedPrice = json.decode(response.body)['predictedPrice'].toString();
+          _predictedPrice =
+              json.decode(response.body)['predictedPrice'].toString();
         });
       } else {
         setState(() {
@@ -73,14 +74,26 @@ class _HouseFormState extends State<HouseForm> {
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(labelText: 'محله'),
                 items: [
-                  'امیرکبیر', 'حمزه‌کلا', 'کمربندی غربی', 'میدان کشوری', 'شریعتی',
-                  'قارن', 'درب دلاکان', 'چهارراه نواب', 'کمربندی شرقی', 'کوی شهید بهشتی'
-                ].map((label) => DropdownMenuItem(value: label, child: Text(label))).toList(),
+                  'امیرکبیر',
+                  'حمزه‌کلا',
+                  'کمربندی غربی',
+                  'میدان کشوری',
+                  'شریعتی',
+                  'قارن',
+                  'درب دلاکان',
+                  'چهارراه نواب',
+                  'کمربندی شرقی',
+                  'کوی شهید بهشتی'
+                ]
+                    .map((label) =>
+                        DropdownMenuItem(value: label, child: Text(label)))
+                    .toList(),
                 onChanged: (value) {},
                 onSaved: (value) => _formData['neighborhood'] = value,
               ),
               TextFormField(
-                decoration: const InputDecoration(labelText: 'متراژ (متر مربع)'),
+                decoration:
+                    const InputDecoration(labelText: 'متراژ (متر مربع)'),
                 keyboardType: TextInputType.number,
                 onSaved: (value) => _formData['area'] = int.tryParse(value!),
               ),
@@ -92,7 +105,8 @@ class _HouseFormState extends State<HouseForm> {
               TextFormField(
                 decoration: const InputDecoration(labelText: 'سال ساخت'),
                 keyboardType: TextInputType.number,
-                onSaved: (value) => _formData['yearBuilt'] = int.tryParse(value!),
+                onSaved: (value) =>
+                    _formData['yearBuilt'] = int.tryParse(value!),
               ),
               TextFormField(
                 decoration: const InputDecoration(labelText: 'تعداد طبقات'),
@@ -102,36 +116,59 @@ class _HouseFormState extends State<HouseForm> {
               TextFormField(
                 decoration: const InputDecoration(labelText: 'طبقه'),
                 keyboardType: TextInputType.number,
-                onSaved: (value) => _formData['floorNumber'] = int.tryParse(value!),
+                onSaved: (value) =>
+                    _formData['floorNumber'] = int.tryParse(value!),
               ),
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(labelText: 'آسانسور'),
-                items: ['دارد', 'ندارد'].map((label) => DropdownMenuItem(value: label, child: Text(label))).toList(),
+                items: ['دارد', 'ندارد']
+                    .map((label) =>
+                        DropdownMenuItem(value: label, child: Text(label)))
+                    .toList(),
                 onChanged: (value) {},
                 onSaved: (value) => _formData['elevator'] = value,
               ),
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(labelText: 'پارکینگ'),
-                items: ['دارد', 'ندارد'].map((label) => DropdownMenuItem(value: label, child: Text(label))).toList(),
+                items: ['دارد', 'ندارد']
+                    .map((label) =>
+                        DropdownMenuItem(value: label, child: Text(label)))
+                    .toList(),
                 onChanged: (value) {},
                 onSaved: (value) => _formData['parking'] = value,
               ),
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(labelText: 'نوع ملک'),
-                items: ['آپارتمان', 'ویلا'].map((label) => DropdownMenuItem(value: label, child: Text(label))).toList(),
+                items: ['آپارتمان', 'ویلا']
+                    .map((label) =>
+                        DropdownMenuItem(value: label, child: Text(label)))
+                    .toList(),
                 onChanged: (value) {},
                 onSaved: (value) => _formData['propertyType'] = value,
               ),
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(labelText: 'نوع سند'),
-                items: ['تک‌برگ', 'قولنامه‌ای', 'شش‌دانگ'].map((label) => DropdownMenuItem(value: label, child: Text(label))).toList(),
+                items: ['تک‌برگ', 'قولنامه‌ای', 'شش‌دانگ']
+                    .map((label) =>
+                        DropdownMenuItem(value: label, child: Text(label)))
+                    .toList(),
                 onChanged: (value) {},
                 onSaved: (value) => _formData['documentType'] = value,
               ),
               DropdownButtonFormField<String>(
-                decoration: const InputDecoration(labelText: 'نزدیکی به مراکز مهم'),
-                items: ['مدرسه', 'مرکز خرید', 'بیمارستان', 'ایستگاه اتوبوس', 'پارک', 'بازار', 'خیابان اصلی']
-                    .map((label) => DropdownMenuItem(value: label, child: Text(label)))
+                decoration:
+                    const InputDecoration(labelText: 'نزدیکی به مراکز مهم'),
+                items: [
+                  'مدرسه',
+                  'مرکز خرید',
+                  'بیمارستان',
+                  'ایستگاه اتوبوس',
+                  'پارک',
+                  'بازار',
+                  'خیابان اصلی'
+                ]
+                    .map((label) =>
+                        DropdownMenuItem(value: label, child: Text(label)))
                     .toList(),
                 onChanged: (value) {},
                 onSaved: (value) => _formData['nearCenters'] = value,
@@ -139,26 +176,36 @@ class _HouseFormState extends State<HouseForm> {
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(labelText: 'وضعیت بازسازی'),
                 items: ['نوساز', 'قدیمی', 'بازسازی شده']
-                    .map((label) => DropdownMenuItem(value: label, child: Text(label)))
+                    .map((label) =>
+                        DropdownMenuItem(value: label, child: Text(label)))
                     .toList(),
                 onChanged: (value) {},
                 onSaved: (value) => _formData['renovationStatus'] = value,
               ),
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(labelText: 'نوع کف‌پوش'),
-                items: ['سرامیک', 'پارکت', 'سنگ', 'موکت'].map((label) => DropdownMenuItem(value: label, child: Text(label))).toList(),
+                items: ['سرامیک', 'پارکت', 'سنگ', 'موکت']
+                    .map((label) =>
+                        DropdownMenuItem(value: label, child: Text(label)))
+                    .toList(),
                 onChanged: (value) {},
                 onSaved: (value) => _formData['flooringType'] = value,
               ),
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(labelText: 'نوع نما'),
-                items: ['آجر', 'سنگ', 'سیمان'].map((label) => DropdownMenuItem(value: label, child: Text(label))).toList(),
+                items: ['آجر', 'سنگ', 'سیمان']
+                    .map((label) =>
+                        DropdownMenuItem(value: label, child: Text(label)))
+                    .toList(),
                 onChanged: (value) {},
                 onSaved: (value) => _formData['facadeType'] = value,
               ),
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(labelText: 'امکانات اضافی'),
-                items: ['هیچ', 'استخر', 'جکوزی', 'سونا'].map((label) => DropdownMenuItem(value: label, child: Text(label))).toList(),
+                items: ['هیچ', 'استخر', 'جکوزی', 'سونا']
+                    .map((label) =>
+                        DropdownMenuItem(value: label, child: Text(label)))
+                    .toList(),
                 onChanged: (value) {},
                 onSaved: (value) => _formData['extraAmenities'] = value,
               ),
@@ -176,7 +223,8 @@ class _HouseFormState extends State<HouseForm> {
                 const SizedBox(height: 20),
                 Text(
                   'قیمت پیش‌بینی‌شده: $_predictedPrice تومان',
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ],

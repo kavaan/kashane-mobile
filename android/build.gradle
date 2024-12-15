@@ -1,4 +1,4 @@
-buildscript {
+﻿buildscript {
     ext.kotlin_version = '1.7.10'
     repositories {
         google()
@@ -29,3 +29,12 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+android {
+    compileSdkVersion 34  // مطمئن شوید این نسخه با SDK نصب شده مطابقت دارد
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 34  // نسخه targetSdk باید با compileSdkVersion مطابقت داشته باشد
+    }
+}
+
